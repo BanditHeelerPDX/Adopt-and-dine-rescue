@@ -6,7 +6,7 @@ $('#searchBtn').click(function() {
     const org = 'vet, shelter';
     getDogs(zipCode, '5');
     getVetShelters(zipCode);
-    //getRestaurant(zipCode);
+    getRestaurant(zipCode);
 });
 
 
@@ -124,33 +124,43 @@ function getDogs(zipCode, limit) {
 
         //yelp api
 
-        // function getRestaurant(zipCode) {
-        //     var searchUrl = 'https://api.yelp.com/v3/businesses/search?term=dog+friendly&location=' + zipCode + '&limit=5';
-        //     $.ajax({
-        //       url: searchUrl,
-        //       headers: {
-        //         'Authorization': 'Bearer V6Oo4GKHu2XFdHcHwlkim9pyL6uVs2rQIMVF5x6oqS-Ng_yetXyLZyRS2eGcwIncN0SQbKbl6rvKMxtwy8Hfm5AVSR6ftj7MAO4PNEANLhHmNN5RoZHWdf87tccGZHYx'
-        //       },
-        //       method: 'GET',
-        //       dataType: 'json',
-        //       success: function(response) {
-        //         var businesses = response.businesses;
-        //         var $searchResults = $('#search-results');
-        //         $searchResults.empty();
-        //         $.each(businesses, function(i, business) {
-        //           const card = $('<div>').addClass('card');
-        //           const cardBody = $('<div>').addClass('card-body');
-        //           const name = $('<h2>').text(business.name);
-        //           const address = $('<p>').text(business.location.address1 + ', ' + business.location.city + ', ' + business.location.state + ' ' + business.location.zip_code);
-        //           const rating = $('<p>').text('Rating: ' + business.rating);
+        function getRestaurant(zipCode) {
+            var searchUrl = 'https://api.yelp.com/v3/businesses/search?term=dog+friendly&postal_code=${zipCode}&limit=5';
+            $.ajax({
+              url: searchUrl,
+              headers: {
+                'Authorization': 'Bearer V6Oo4GKHu2XFdHcHwlkim9pyL6uVs2rQIMVF5x6oqS-Ng_yetXyLZyRS2eGcwIncN0SQbKbl6rvKMxtwy8Hfm5AVSR6ftj7MAO4PNEANLhHmNN5RoZHWdf87tccGZHYx'
+              },
+              method: 'GET',
+              dataType: 'json',
+              success: function(response) {
+                var businesses = response.businesses;
+                var searchResults = $('#restaurantEl');
+                searchResults.empty();
+                // $.each(businesses, function(i, business) {
+                //   const card = $('<div>').addClass('card');
+                //   const cardBody = $('<div>').addClass('card-body');
+                //   const name = $('<h2>').text(business.name);
+                //   const address = $('<p>').text(business.location.address1 + ', ' + business.location.city + ', ' + business.location.state + ' ' + business.location.zip_code);
+                //   const rating = $('<p>').text('Rating: ' + business.rating);
                   
-        //           cardBody.append(name, address, rating,);
-        //           card.append(cardBody);
-        //           searchResults.append(card);
-        //         });
-        //       },
-        //       error: function(xhr, status, error) {
-        //         console.log('Error: ' + xhr.responseText);
-        //       }
-        //     });
-        //   }
+                //   cardBody.append(name, address, rating,);
+                //   card.append(cardBody);
+                //   searchResults.append(card);
+                $.each(businesses, function(i, business) {
+                    const card = $('<div>').addClass('card blue-grey darken-1');
+                    const cardContent = $('<div>').addClass('card-content white-text');
+                    const name = $('<span>').addClass('card-title').text(business.name);
+                    const address = $('<p>').text(business.location.address1 + ', ' + business.location.city + ', ' + business.location.state + ' ' + business.location.zip_code);
+                    const rating = $('<p>').text('Rating: ' + business.rating);
+                                  
+                    cardContent.append(name, address, rating);
+                    card.append(cardContent);
+                    searchResults.append(card);
+                });
+              },
+              error: function(xhr, status, error) {
+                console.log('Error: ' + xhr.responseText);
+              }
+            });
+          }
