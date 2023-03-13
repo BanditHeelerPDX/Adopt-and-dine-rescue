@@ -72,7 +72,7 @@
                     <!-- dog icon included left of Submit button using materialize icons-->
                     <!-- can use hoverable on any element to make it pop up on hover-->
                     <!-- TODO: change button size to smaller size (btn-small)-->
-                    <button type="submit" title="Search for a new dinner date"
+                    <button type="submit" title="Search for a new dinner date" id="searchBtn"
                         class="btn waves-effect purple lighten-1 hoverable z-depth-3"><i
                             class="material-icons left">pets</i>Submit</button>
                 </fieldset>
@@ -118,20 +118,11 @@
     <section id="vetEl" class="container row vetEl purple-text text-lighten-1">
         <div class="col s6">
             <!-- Use JS to populate dog where Vet Office is currently-->
-            <h2 id="vetOfficeAvailable">Vet Office</h2>
-            <img src="" alt="">
+            <h2 id="vetOfficeAvailable">Vet/Shelters</h2>
         </div>
        
     </section>
-    <section id="shelterEl" class="container row shelterEl purple-text text-lighten-1">
-        <div class="col s6">
-            <!-- Use JS to populate shelter where Shelter is currently-->
-            <h2 id="shelterName">Shelter</h2>
-            <img src="" alt="">
-        </div>
-       
-    </section>
-    <script src="fetch.js"></script>
+    <script src="ajax.js"></script>
 </body>
 
 </html>
