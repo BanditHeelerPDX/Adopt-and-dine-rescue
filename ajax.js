@@ -50,15 +50,34 @@ function getDogs(zipCode, limit) {
     .done(function(data) {
         console.log(data);
         const dogContainer = $('#additionalDogEl');
-        data.animals.forEach(dog => {
+        //   data.animals.forEach(dog => {
+        //     const card = $('<div></div>').addClass('card');
+        //     const name = $('<h2></h2>').text(dog.name);
+        //     const age = $('<p></p>').text(`Age: ${dog.age}`);
+        //     const gender = $('<p></p>').text(`Gender: ${dog.gender}`);
+        //     const breed = $('<p></p>').text(`Breed: ${dog.breeds.primary}`);
+        //     const link = $('<a></a>').attr('href', dog.url).text('Adopt Me!');
+        //     const photo = $('<img>').attr('src', dog.photos[0].medium);
+        //     card.append(name, age, gender, breed, link, photo);
+        //     dogContainer.append(card);
+             data.animals.forEach(dog => {
             const card = $('<div></div>').addClass('card');
             const name = $('<h2></h2>').text(dog.name);
             const age = $('<p></p>').text(`Age: ${dog.age}`);
             const gender = $('<p></p>').text(`Gender: ${dog.gender}`);
             const breed = $('<p></p>').text(`Breed: ${dog.breeds.primary}`);
             const link = $('<a></a>').attr('href', dog.url).text('Adopt Me!');
-            const photo = $('<img>').attr('src', dog.photos[0].medium);
-            card.append(name, age, gender, breed, link, photo);
+            const photo = $('<img>').attr('src', dog.photos[0].medium).addClass('responsive-img');
+          
+            const cardContent = $('<div></div>').addClass('card-content').append(name, age, gender, breed, link);
+            const cardImage = $('<div></div>').addClass('card-image').append(photo);
+          
+            const row = $('<div></div>').addClass('row').append(
+              $('<div></div>').addClass('col s8').append(cardContent),
+              $('<div></div>').addClass('col s4').append(cardImage)
+            );
+          
+            card.append(row);
             dogContainer.append(card);
         });
     })

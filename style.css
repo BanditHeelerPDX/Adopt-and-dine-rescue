@@ -132,22 +132,63 @@ background-size: cover;
  #searchFieldLegend {
   font-size: 1.5em;
  }
-
- .card {
+ /* .card {
+  height: 250px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  width: 400px;
+  overflow: hidden;
+  justify-content: flex-start;
+} 
+/* .card h2 {
+  margin: 0;
+  justify-content: center;
 }
 
-  .card img {
-     width: 100%;
-     height: 100%;
-     object-fit: cover;
-     object-position: center center;
-     display: flex;
-  }
 
-  .orgContainer {
+.card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-left: auto;
+/* } */
+/* .card {
+  height: 250px;
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+} 
+
+  .card img {
+     width: 80%;
+     height: 80%;
+     object-fit: cover;
+     object-position: center;
+  }  */
+
+  /* .orgContainer {
      display: flex;
      flex-direction: column;
      align-items: center;
   }
+
+.vetEl {
+  display: flex;
+  flex-direction: row;
+
+  
+}
+.card p {
+  margin: 0 0 10px 0;
+  font-size: 1.5em;
+  font-family: 'Handlee', cursive;
+  display: block;
+  
+} */
+
+/* .additonalDogEl {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+} */
